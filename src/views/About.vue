@@ -1,5 +1,6 @@
 <template>
   <div class="about">
-    <h1>Sobre nosotros</h1>
+    <h1>Sobre la empresa</h1>
+    <h3>Nueva rama</h3>
   </div>
 </template>
