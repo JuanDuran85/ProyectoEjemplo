@@ -15,13 +15,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(persona,index) in traerPersona" :key="index">
+        <tr v-for="(persona,index) in traerPersona" :key="index" :class="{seleccionado: persona.favorito}">
           <td>{{persona.id}}</td>
           <td><img :src="persona.avatar" :alt="index" class="avatar"></td>
           <td>{{persona.first_name}}</td>
           <td>{{persona.last_name}}</td>
           <td>{{persona.email}}</td>
-          <td><button @click="agregarFav(persona.id)">Favorito</button></td>
+          <td><button @click="agregarFav(persona)">{{persona.favorito ? "Favorito":"Agregar a Favorito"}}</button></td>
         </tr>
       </tbody>
     </table>
@@ -33,20 +33,20 @@ export default {
   name: 'About',
   data() {
     return {
-      busqueda: ''
+      busqueda: '',
     }
   },
   computed: {
     traerPersona(){
       return this.$store.getters.envioListaPersona.filter(datos=>{
         return datos.first_name.toLowerCase().includes(this.busqueda.toLowerCase()) ||
-        datos.last_name.toLowerCase().includes(this.busqueda.toLowerCase()) 
+                datos.last_name.toLowerCase().includes(this.busqueda.toLowerCase()) 
       })
-    }
+    },
   },
   methods: {
-    agregarFav(id){
-      this.$store.dispatch('AgregarFavorito',id);
+    agregarFav(persona){
+      this.$store.dispatch('AgregarFavorito',persona);
     }
   },
 }
@@ -56,5 +56,8 @@ export default {
   .avatar{
     width: 100px;
     height: 100px;
+  }
+  .seleccionado{
+    background-color: aquamarine;
   }
 </style>
