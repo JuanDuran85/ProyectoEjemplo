@@ -8,6 +8,17 @@
   </div>
 </template>
 
+<script>
+import {conexionApi} from './config/conexionApi';
+
+export default {
+  name: 'App',
+  created() {
+    conexionApi();
+  },
+}
+</script>
+
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
