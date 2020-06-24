@@ -15,7 +15,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(persona,index) in datosFavoritos" :key="index" :class="{seleccionado: persona.favorito}">
+        <tr v-for="(persona,index) in datosFavoritos" :key="index">
           <td>{{persona.id}}</td>
           <td><img :src="persona.avatar" :alt="index" class="avatar"></td>
           <td>{{persona.first_name}}</td>
@@ -57,7 +57,7 @@ export default {
               this.datosFavoritos = aux;
           })
       }else{
-          this.router.push('/login');
+          this.$router.push('/login');
       }
   },
 }

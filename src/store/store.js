@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     uidUser: '',
-    listaPersona: []
+    listaPersona: [] || JSON.parse(localStorage.getItem("favorito")),
   },
   getters: {
     envioListaPersona(state){
@@ -32,9 +32,8 @@ export default new Vuex.Store({
       }).then(()=>{
         console.log("Agregado a favorito");
         let cambioFav = state.listaPersona.filter(item => item.id === personaCompleta.id)
-        console.log(cambioFav);
-        cambioFav.favorito = true;
-        console.log(state.listaPersona)
+        cambioFav[0].favorito = true;
+        localStorage.setItem('favorito',JSON.stringify(state.listaPersona));
       }).catch(err => console.error(err))
     },
     mutandoUidUsuario(state,userID){

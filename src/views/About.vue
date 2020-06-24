@@ -39,13 +39,13 @@ export default {
   computed: {
     traerPersona(){
       return this.$store.getters.envioListaPersona.filter(datos=>{
-        return datos.first_name.toLowerCase().includes(this.busqueda.toLowerCase()) ||
-                datos.last_name.toLowerCase().includes(this.busqueda.toLowerCase()) 
+        return datos.first_name.toLowerCase().includes(this.busqueda.toLowerCase()) || datos.last_name.toLowerCase().includes(this.busqueda.toLowerCase()) 
       })
     },
   },
   methods: {
     agregarFav(persona){
+      console.log(persona)
       this.$store.dispatch('AgregarFavorito',persona);
     }
   },
@@ -60,4 +60,12 @@ export default {
   .seleccionado{
     background-color: aquamarine;
   }
+
+table{
+  td:hover{
+    background-color: aqua;
+  }
+}
+
+
 </style>
